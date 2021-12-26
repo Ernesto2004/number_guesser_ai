@@ -86,14 +86,16 @@ class Window():
                     self.results = guess("board.png")
 
             y = 40
-            for result in self.results:
-                Text(self.screen, f"{result[0]}: {result[1]}", c["WHITE"], ((410, y), 38))
-                y += 45
+            for i, result in enumerate(self.results):
+                color = c["WHITE"]
+                if i == 0: color = c["GREEN"]
+                Text(self.screen, f"{result[0]}: {str(result[1])[:4]}%", color, ((410, y), 30))
+                y += 30
 
             Text(self.screen, str(self.board.compute_coords(pygame.mouse.get_pos())), c["WHITE"], ((410, 10), 20))
             pygame.display.flip()
 
-        # os.remove("board.png")
+        os.remove("board.png")
         pygame.quit()
 
 if __name__ == "__main__":

@@ -1,6 +1,8 @@
 from PIL import Image, ImageChops
 from os import scandir
 
+pics = len([1 for x in list(scandir("numbers")) if x.is_file()])
+
 def trim(im):
     bg = Image.new(im.mode, im.size, im.getpixel((0,0)))
     diff = ImageChops.difference(im, bg)
@@ -30,14 +32,15 @@ def match(data_img, scan_img):
                 if px1 == (0,0,0):
                     black_pixels += 1
     
-    percentage = str((pixel_match/black_pixels)*100)[:4] + "%"
+    percentage = (pixel_match/black_pixels)*100
     return percentage
 
 def create_reference_image():
-    name = f"num{len([1 for x in list(scandir(dir)) if x.is_file()])}.png"
+    name = f"num{pics+1}.png"
     img = trim(Image.open("board.png"))
     img.save("numbers/"+name)
 
 def guess(board_img):
-    results = [(num, match(f"numbers/num{num}.png", board_img)) for num in range(1, 4)]
+    results = [(num, match(f"numbers/num{num}.png", board_img)) for num in range(0, pics)]
+    results.sort(key = lambda percentage: percentage[1], reverse=True)
     return results
