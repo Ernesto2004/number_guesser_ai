@@ -1,4 +1,4 @@
 # number_guesser_ai
-Using a simple logic, this program tries to determine which number is drawn on the 20x20 board.
+Using simple logic, this program tries to determine which number is drawn on the 20x20 board.
 
-<img src="https://lh6.googleusercontent.com/i91vn936jnsKm0fa9VDsDsprjW7DxNd5tXnX3tUqCMjcYAQt31CC-LPQNuvSnKPgg6GzKwF73Mecv__U668g=w1679-h925" width=400/>
+<img src="https://user-images.githubusercontent.com/52049224/147715298-9660f565-43e0-4573-99a7-77e09d7cc2d9.gif" width=400/>
